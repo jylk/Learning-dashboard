@@ -14,7 +14,7 @@ const port = 3000;
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://learning-dashboard-client.vercel.app"],
+    origin: ["https://learning-dashboard-front.vercel.app/"],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
   }
