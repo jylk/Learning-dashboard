@@ -108,7 +108,7 @@ export const Cart = () => {
             </div>
 
             <div className="w-6/12 bg-base-300 flex flex-col items-center gap-5">
-                <h2>Price summary</h2>
+                <h2>Price summary:</h2>
                 <h2>Total Price: {cartData?.totalPrice}</h2>
                 <button onClick={makePayment} className="btn btn-success">Checkout</button>
             </div>
