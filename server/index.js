@@ -16,7 +16,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://learning-dashboard-front-jaya-lakshmis-projects.vercel.app", // Set your frontend URL
+    origin: "https://learning-dashboard-front.vercel.app/", // Set your frontend URL
     credentials: true, // Allow cookies/auth headers
   })
 );
