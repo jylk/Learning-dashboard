@@ -12,9 +12,15 @@ const app = express();
 const port = 3000;
 
 app.use(express.json());
+
+
 app.use(
-  cors(
-  ));
+  cors({
+    origin: "https://learning-dashboard-front-jaya-lakshmis-projects.vercel.app", // Set your frontend URL
+    credentials: true, // Allow cookies/auth headers
+  })
+);
+
 app.use(cookieParser());
 
 
