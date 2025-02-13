@@ -18,6 +18,8 @@ app.use(
   cors({
     origin: "https://learning-dashboard-front.vercel.app", // Set your frontend URL
     credentials: true, // Allow cookies/auth headers
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
   })
 );
 
