@@ -37,7 +37,7 @@ export const Cart = () => {
         };
 
         fetchCartData();
-    }, []);
+    }, [cartData]);
 
     const handleRemoveItem = async (courseId) => {
         try {
