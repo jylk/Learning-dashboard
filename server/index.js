@@ -13,10 +13,10 @@ const port = 3000;
 
 app.use(express.json());
 app.use(cors({
-  origin: "https://learning-dashboard-client.vercel.app", // ✅ Your frontend URL
+  origin: "https://learning-dashboard-client.vercel.app", // ✅ Allow only your frontend
   credentials: true, // ✅ Allow cookies/auth headers
-  methods: "GET,POST,PUT,DELETE,OPTIONS",
-  allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // ✅ Allow required methods
+  allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"] // ✅ Allow necessary headers
 }));
 
 
