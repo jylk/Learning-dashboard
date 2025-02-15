@@ -4,46 +4,37 @@ import { apiRouter } from "./routes/index.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import { createAdmin } from "./controllers/adminController.js";
-import dotenv from "dotenv";
-
+import dotenv from 'dotenv';
 dotenv.config();
-createAdmin();
+createAdmin()
 
 const app = express();
 const port = 3000;
 
-// ✅ Place CORS middleware at the very top
+app.use(express.json());
 app.use(cors({
-  origin: "https://learning-dashboard-client.vercel.app", // ✅ Allow only your frontend
+  origin: "https://learning-dashboard-client.vercel.app", // ✅ Your frontend URL
   credentials: true, // ✅ Allow cookies/auth headers
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // ✅ Allow necessary methods
-  allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"] // ✅ Allow necessary headers
+  methods: "GET,POST,PUT,DELETE,OPTIONS",
+  allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept, Authorization",
 }));
 
-// ✅ Explicitly handle OPTIONS preflight requests
-app.options("*", cors()); 
 
-// ✅ Other middlewares
-app.use(express.json());
 app.use(cookieParser());
 
-connectDB()
-  .then(() => console.log("Database connected successfully."))
-  .catch((error) => console.error("Database connection error:", error));
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+connectDB().then(() => {
+  console.log("Database connected successfully.");
+}).catch((error) => {
+  console.error("Database connection error:", error);
 });
 
-// ✅ Apply CORS middleware to API router as well (if needed)
-app.use("/api", cors(), apiRouter);
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+})
 
-// ✅ Catch all errors and always send CORS headers
-app.use((err, req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://learning-dashboard-client.vercel.app"); // ✅ Explicitly allow frontend origin
-  res.status(err.status || 500).json({ error: err.message });
-});
+app.use("/api", apiRouter);
 
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+  console.log(`Example app listening on port ${port}`);
+})
