@@ -13,7 +13,7 @@ const port = 3000;
 
 app.use(express.json());
 app.use(cors({
-  origin: "https://learning-ecru-five.vercel.app", // ✅ Your frontend URL
+  origin: "https://learning-dashboard-client.vercel.app", // ✅ Your frontend URL
   credentials: true, // ✅ Allow cookies/auth headers
   methods: "GET,POST,PUT,DELETE,OPTIONS",
   allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept, Authorization",
