@@ -74,7 +74,6 @@ export const Cart = () => {
             });
             console.log("zzzzz...........................",session);
             
-
             await axiosInstance.post("/order/create-order", {
                 courses: cartData?.courses.map(course => ({
                     courseId: course._id,
