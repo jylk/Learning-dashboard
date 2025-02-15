@@ -66,7 +66,7 @@ export const Cart = () => {
                 method: "POST",
                 data: { products: cartData?.courses },
             });
-            console.log(session);
+            console.log("zzzzz...........................",session);
             
 
             await axiosInstance.post("/order/create-order", {
@@ -81,6 +81,7 @@ export const Cart = () => {
             });
             await axiosInstance.post("/cart/clear-cart");
             await stripe.redirectToCheckout({ sessionId: session?.data?.sessionId });
+
             toast.success("Order successfully created!");
         } catch (error) {
             console.log(error);
