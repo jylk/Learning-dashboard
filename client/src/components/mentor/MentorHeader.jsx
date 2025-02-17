@@ -11,7 +11,7 @@ export const MentorHeader = () => {
             <Link to={"/mentor/home"}>
                 <div className="text-3xl font-bold">Mentor</div>
             </Link>
-            <div className="px-10 w-full"> <SearchBarMentor /></div>
+            <div className="px-10 w-96"> <SearchBarMentor /></div>
             <nav className="flex gap-16 items-center font-semibold">
                 <Link to={"/mentor/home"}>Home</Link>
                 <Link to={"/mentor/about"}>About</Link>
