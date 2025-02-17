@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../../config/axiosInstance";
+import { Link } from 'react-router-dom';
 
 export const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -49,7 +50,11 @@ export const Orders = () => {
                       <div className="flex flex-col flex-grow">
                         <p className="text-gray-700 dark:text-gray-200 font-medium text-sm">{course.title || "No Title"}</p>
                         <p className="text-gray-500 dark:text-gray-300 text-sm">₹{course.price}</p>
-                        
+                        <Link to={`/course-details/${course.courseId?._id }`}>
+                          <button className="btn btn-primary px-6 py-2 text-lg font-semibold rounded-lg bg-blue-500 hover:bg-blue-600 transition-all">
+                            More Detail
+                          </button>
+                        </Link>
                       </div>
                     </li>
                   ))}

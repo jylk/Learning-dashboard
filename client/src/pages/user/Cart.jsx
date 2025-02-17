@@ -66,17 +66,17 @@ export const Cart = () => {
     const makePayment = async () => {
         try {
             const stripe = await loadStripe(import.meta.env.VITE_STRIPE_Publishable_key);
-
+    
             const session = await axiosInstance({
                 url: "/payment/create-checkout-session",
                 method: "POST",
                 data: { products: cartData?.courses },
             });
-            console.log("zzzzz...........................",session);
-            
+    
+            // Ensure correct course IDs are passed to the order creation
             await axiosInstance.post("/order/create-order", {
                 courses: cartData?.courses.map(course => ({
-                    courseId: course._id,
+                    courseId: course.courseId?._id,  // Ensure the correct course ID is used
                     title: course.courseId?.title,
                     price: course.courseId?.price,
                     image: course.courseId?.image
@@ -84,27 +84,28 @@ export const Cart = () => {
                 totalAmount: cartData?.totalPrice,
                 userid,
             });
+    
             await axiosInstance.post("/cart/clear-cart");
             await stripe.redirectToCheckout({ sessionId: session?.data?.sessionId });
-
             toast.success("Order successfully created!");
         } catch (error) {
             console.log(error);
+            toast.error("Failed to create order");
         }
     };
-
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
-
-    if (error) {
-        return <div>Error: {error.message}</div>;
-    }
-
-    // Show no cart message if cartData is empty
-    if (!cartData || cartData.courses.length === 0) {
-        return <div className="text-center">No items in your cart!</div>;
-    }
+    
+        if (isLoading) {
+            return <div>Loading...</div>;
+        }
+    
+        if (error) {
+            return <div>Error: {error.message}</div>;
+        }
+    
+        // Show no cart message if cartData is empty
+        if (!cartData || cartData.courses.length === 0) {
+            return <div className="text-center">No items in your cart!</div>;
+        }
 
     return (
         <div className="p-6 flex flex-col items-center bg-gray-50">
