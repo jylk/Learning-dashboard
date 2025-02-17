@@ -18,7 +18,7 @@ export const CourseCard = ({ course }) => {
 
                 <p className="text-lg text-black mt-2">₹{course?.price}</p>
               
-                    <Link to={`/course-details/${course?._id}`}>
+                    <Link to={`/admin/course-details/${course?._id}`}>
                         <button className="btn btn-primary px-6 py-2 text-lg font-semibold rounded-lg bg-blue-500 hover:bg-blue-600 transition-all">
                             More Detail 
                         </button>

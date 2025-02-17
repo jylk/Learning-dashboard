@@ -10,22 +10,6 @@ export const AdminCourseDetails = () => {
   const [lectures, setLectures] = useState([]);
   const [loadingLectures, setLoadingLectures] = useState(true);
 
-  useEffect(() => {
-    const fetchLectures = async () => {
-      try {
-        const response = await axiosInstance.post("/lectures/getLectures", {
-          courseId: id,
-        });
-        setLectures(response.data.lectures);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoadingLectures(false);
-      }
-    };
-
-    fetchLectures();
-  }, [id]);
 
   return (
     <div className="flex flex-col md:flex-row w-full min-h-screen bg-gray-900 text-white p-6">
@@ -102,7 +86,7 @@ export const AdminCourseDetails = () => {
             </ul>
           </details>
         </div>
-    
+
       </div>
     </div>
   );
