@@ -26,39 +26,45 @@ export const Orders = () => {
 
   return (
     <div className="container mx-auto py-8 px-4">
-      <h1 className="text-2xl font-bold text-center mb-6 text-gray-500 dark:text-gray-200">Your Orders</h1>
+      <h1 className="text-3xl font-semibold text-center mb-8 text-gray-800 dark:text-gray-100">Your Orders</h1>
       {orders.length > 0 ? (
-        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {orders.map((order) => (
-            <div key={order._id} className="flex flex-col bg-base-200 dark:bg-gray-800 shadow-lg rounded-lg p-6 gap-6 hover:shadow-xl transition-all w-full">
-              <h2 className="text-lg font-semibold text-gray-500 dark:text-gray-200">Order ID: {order._id}</h2>
-              <p className="text-gray-500 dark:text-gray-200">Total Price: <strong>₹{order.totalAmount}</strong></p>
-              <p className="text-gray-500 dark:text-gray-200">Payment Status:
-                <span className={`ml-2 font-semibold ${order.paymentStatus === "Paid" ? "text-green-600" : "text-red-500"}`}>
+            <div key={order._id} className="flex flex-col bg-white dark:bg-gray-900 shadow-lg rounded-xl p-6 gap-6 hover:shadow-2xl transition-all transform hover:scale-105 w-full">
+              <p className="text-gray-600 dark:text-gray-300">
+                Payment Status:
+                <span className={`ml-2 font-semibold ${order.paymentStatus === "Paid" ? "text-green-500" : "text-red-500"}`}>
                   {order.paymentStatus}
                 </span>
               </p>
+              
               <div>
-                <h3 className="text-gray-500 dark:text-gray-200 font-semibold">Courses in Order:</h3>
-                <ul className="list-none mt-3">
+                <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300">Courses in Order:</h3>
+                <ul className="list-none mt-4 space-y-4">
                   {order.courses.map((course, index) => (
-                    <li key={index} className="flex items-center bg-base-200 dark:bg-gray-700 shadow-lg rounded-lg p-4 gap-4 hover:shadow-xl transition-all w-full">
+                    <li key={index} className="flex items-center bg-gray-100 dark:bg-gray-800 shadow-md rounded-lg p-4 gap-4 hover:shadow-lg transition-all w-full">
                       {course.image && (
-                        <img src={course.image} alt="Course" className="w-24 h-20 rounded-lg object-cover" />
+                        <img src={course.image} alt="Course" className="w-20 h-20 rounded-lg object-cover shadow-md" />
                       )}
                       <div className="flex flex-col flex-grow">
-                        <p className="text-gray-500 dark:text-gray-200 font-medium">{course.title || "No Title"}</p>
-                        <p className="text-gray-500 dark:text-gray-200">₹{course.price}</p>
+                        <p className="text-gray-700 dark:text-gray-200 font-medium text-sm">{course.title || "No Title"}</p>
+                        <p className="text-gray-500 dark:text-gray-300 text-sm">₹{course.price}</p>
+                        <Link to={`/course-details/${course?._id}`}>
+                          <button className="btn btn-primary px-2 py-0 text-sm font-semibold rounded-lg bg-blue-500 hover:bg-blue-600 transition-all">
+                              More Detail 
+                          </button>
+                      </Link>
                       </div>
                     </li>
                   ))}
                 </ul>
               </div>
-            </div>
+              </div>
+            
           ))}
         </div>
       ) : (
-        <p className="text-center text-gray-600 dark:text-gray-300">No orders found.</p>
+        <p className="text-center text-gray-500 dark:text-gray-400">No orders found.</p>
       )}
     </div>
   );

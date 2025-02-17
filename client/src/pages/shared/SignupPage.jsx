@@ -49,85 +49,48 @@ export const SignupPage = ({ role = 'user' }) => {
     };
 
     return (
-        <div className="hero bg-base-200 min-h-screen">
-            <div className="hero-content flex-col lg:flex-row">
-                <div className="text-center lg:text-left">
-                    <h1 className="text-5xl font-bold">Signup now!</h1>
-                    <p className="py-6">
-                        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque
-                        aut repudiandae et a id nisi.
-                    </p>
-                </div>
-                <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                    <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Username</span>
-                            </label>
-                            <input type="text" placeholder="name" {...register("name")} className="input input-bordered" required />
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 p-6">
+            <div className="w-full max-w-md bg-white bg-opacity-20 backdrop-blur-md shadow-xl rounded-3xl p-8">
+                <h1 className="text-4xl font-bold text-white text-center mb-4">Sign Up</h1>
+                <p className="text-white text-center mb-6">
+                    Join our learning community! Sign up to explore courses, share your expertise, and make an impact.
+                </p>
+                
+                <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+                    <div>
+                        <label className="block text-white mb-2">Username</label>
+                        <input type="text" placeholder="Enter your name" {...register("name")} 
+                               className="w-full p-4 rounded-xl bg-white bg-opacity-40 border-none focus:ring-4 focus:ring-blue-400 text-gray-900 placeholder-gray-600" required />
+                    </div>
+                    <div>
+                        <label className="block text-white mb-2">Email</label>
+                        <input type="email" placeholder="Enter your email" {...register("email")} 
+                               className="w-full p-4 rounded-xl bg-white bg-opacity-40 border-none focus:ring-4 focus:ring-blue-400 text-gray-900 placeholder-gray-600" required />
+                    </div>
+                    <div>
+                        <label className="block text-white mb-2">Password</label>
+                        <input type="password" placeholder="Create a password" {...register("password")} 
+                               className="w-full p-4 rounded-xl bg-white bg-opacity-40 border-none focus:ring-4 focus:ring-blue-400 text-gray-900 placeholder-gray-600" required />
+                        <div className="text-right text-sm mt-1">
+                            <Link to="/login" className="text-blue-200 hover:text-white">Existing User? Log in</Link>
                         </div>
-
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            <input type="email" placeholder="email" {...register("email")} className="input input-bordered" required />
-                        </div>
-
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
-                            <input
-                                type="password"
-                                placeholder="password"
-                                {...register("password")}
-                                className="input input-bordered"
-                                required
-                            />
-                            <label className="label">
-                                <Link to={'/login'}>
-                                    <a href="#" className="label-text-alt link link-hover">
-                                        Existing User?
-                                    </a>
-                                </Link>
-                            </label>
-                        </div>
-
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Mobile Number</span>
-                            </label>
-                            <input
-                                type="tel"
-                                placeholder="Enter your mobile number"
-                                {...register("mobile")}
-                                className="input input-bordered"
-                                required
-                            />
-                        </div>
-
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Profile Picture</span>
-                            </label>
-                            <input
-                                type="file"
-                                {...register("profilePic")}
-                                className="file-input file-input-bordered"
-                                accept="image/*"
-                            />
-                        </div>
-
-
-
-                        <div className="form-control mt-6">
-                            <button className="btn btn-primary" disabled={isLoading}>
-                                {isLoading ? <span className="loading loading-spinner"></span> : "Sign Up"}
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div>
+                        <label className="block text-white mb-2">Mobile Number</label>
+                        <input type="tel" placeholder="Enter your mobile number" {...register("mobile")} 
+                               className="w-full p-4 rounded-xl bg-white bg-opacity-40 border-none focus:ring-4 focus:ring-blue-400 text-gray-900 placeholder-gray-600" required />
+                    </div>
+                    <div>
+                        <label className="block text-white mb-2">Profile Picture</label>
+                        <input type="file" {...register("profilePic")} 
+                               className="w-full file:bg-blue-500 file:text-white file:rounded-lg file:px-4 file:py-3 file:border-none cursor-pointer hover:file:bg-blue-600" 
+                               accept="image/*" />
+                    </div>
+                    <button className="w-full bg-blue-500 hover:bg-blue-600 text-white py-4 rounded-xl transition duration-300 flex items-center justify-center text-lg font-semibold shadow-md hover:shadow-lg"
+                            disabled={isLoading}>
+                        {isLoading ? <span className="loading loading-spinner"></span> : "Sign Up"}
+                    </button>
+                </form>
             </div>
         </div>
     );

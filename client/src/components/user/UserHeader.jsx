@@ -11,7 +11,7 @@ export const UserHeader = () => {
             <Link to={"/"}>
                 <div className="text-3xl font-bold">User</div>
             </Link>
-            <div className="px-10 w-full"> <SearchBar /></div>
+            <div className="px-10 w-96"> <SearchBar /></div>
             <nav className="flex gap-16 items-center font-semibold">
                 <Link to={"/"}>Home</Link>
                 <Link to={"/about"}>About</Link>

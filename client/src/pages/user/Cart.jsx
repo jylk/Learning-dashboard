@@ -107,17 +107,20 @@ export const Cart = () => {
     }
 
     return (
-        <div className="p-6 flex flex-col items-center">
-            <div className="grid gap-6 w-full max-w-3xl mt-6 w-full max-w-md bg-base-200 shadow-lg rounded-lg p-6 text-center">
+        <div className="p-6 flex flex-col items-center bg-gray-50">
+            <div className="grid gap-8 w-full max-w-3xl mt-6 bg-gradient-to-r from-indigo-100 via-blue-50 to-indigo-100 shadow-xl rounded-lg p-8 text-center transition-transform transform hover:scale-105">
                 {cartData?.courses?.map((value) => (
                     <CartCards item={value} key={value._id} handleRemove={() => handleRemoveItem(value._id)} />
                 ))}
             </div>
 
-            <div className="mt-6 w-full max-w-md bg-base-200 shadow-lg rounded-lg p-6 text-center">
-                <h2 className="text-xl font-semibold mb-4">Price Summary</h2>
-                <h2 className="text-lg font-bold">Total Price: ₹{cartData?.totalPrice}</h2>
-                <button onClick={makePayment} className="mt-4 w-full py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition-all duration-300 shadow-md">
+            <div className="mt-8 w-full max-w-md bg-white shadow-xl rounded-lg p-6 text-center border-t-4 border-indigo-500">
+                <h2 className="text-2xl font-semibold mb-4 text-gray-800">Price Summary</h2>
+                <h2 className="text-xl font-bold text-gray-700">Total Price: ₹{cartData?.totalPrice}</h2>
+                <button
+                    onClick={makePayment}
+                    className="mt-6 w-full py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg transform hover:scale-105"
+                >
                     Proceed to Checkout
                 </button>
             </div>

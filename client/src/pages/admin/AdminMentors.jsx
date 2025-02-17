@@ -41,58 +41,57 @@ export const AdminMentors = () => {
   return (
     <div className="p-10 bg-gray-100 min-h-screen">
       <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">Admin Mentors</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {mentors.map((mentor) => (
-          <div
-            key={mentor._id}
-            className="bg-white shadow-lg rounded-lg overflow-hidden p-6 border border-gray-200 transition-all duration-300 hover:shadow-xl"
-          >
-            <div className="flex items-center space-x-4">
-              <img
-                src={mentor.profilePic}
-                alt="Profile"
-                className="w-16 h-16 rounded-full border border-gray-300"
-              />
-              <div>
-                <h2 className="text-xl font-semibold text-gray-800">{mentor.name}</h2>
-                <p className="text-sm text-gray-600">📧 {mentor.email}</p>
-                <p className="text-sm text-gray-600">🎓 {mentor.qualification}</p>
-              </div>
-            </div>
-
-            {/* Courses Section */}
-            <div className="mt-4">
-              <h3 className="font-semibold text-gray-700">Posted Courses:</h3>
-              {getMentorCourses(mentor._id).length > 0 ? (
-                <div className="bg-gray-50 p-3 rounded-lg mt-2 border">
-                  {getMentorCourses(mentor._id).map((course) => (
-                    <div key={course._id} className="mb-2 border-b pb-2">
-                      <p className="text-sm text-gray-700">📖 {course.title}</p>
-                      <p className="text-sm text-gray-700">💰 Price: ${course.price}</p>
-                      <p className="text-xs text-gray-500">⌛ {course.duration} hours</p>
-                      <img
-                        src={course.image}
-                        alt="Course"
-                        className="w-10 h-10 rounded-lg border mt-2"
-                      />
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-sm text-gray-600 mt-2">No Courses Posted</p>
-              )}
-            </div>
-
-            {/* Delete Button */}
-            <button
-              onClick={() => deleteMentor(mentor._id)}
-              className="mt-4 w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2 rounded-lg flex items-center justify-center gap-2"
-            >
-              <Trash2 size={18} /> Remove Mentor
-            </button>
-          </div>
-        ))}
-      </div>
+  
+      <table className="min-w-full bg-white shadow-lg border-collapse border border-gray-200">
+        <thead className="bg-gray-200">
+          <tr>
+            <th className="px-4 py-2 text-left text-sm text-gray-700">Mentor Image</th>
+            <th className="px-4 py-2 text-left text-sm text-gray-700">Mentor Email</th>
+            <th className="px-4 py-2 text-left text-sm text-gray-700">Courses</th>
+            <th className="px-4 py-2 text-left text-sm text-gray-700">Delete Mentor</th>
+          </tr>
+        </thead>
+        <tbody>
+          {mentors.map((mentor) => (
+            <tr key={mentor._id} className="border-b hover:bg-gray-50">
+              {/* Mentor Image */}
+              <td className="px-4 py-2">
+                <img
+                  src={mentor.profilePic}
+                  alt="Mentor Profile"
+                  className="w-16 h-16 rounded-full border border-gray-300"
+                />
+              </td>
+  
+              {/* Mentor Email */}
+              <td className="px-4 py-2 text-sm text-gray-600">
+                {mentor.email}
+              </td>
+  
+              {/* List of Courses */}
+              <td className="px-4 py-2 text-sm text-gray-600">
+                {getMentorCourses(mentor._id).length > 0 ? (
+                  getMentorCourses(mentor._id).map((course, index) => (
+                    <p key={index} className="text-sm">{course.title}</p>
+                  ))
+                ) : (
+                  <p className="text-sm text-gray-400">No Courses Posted</p>
+                )}
+              </td>
+  
+              {/* Delete Mentor Button */}
+              <td className="px-4 py-2 text-sm">
+                <button
+                  onClick={() => deleteMentor(mentor._id)}
+                  className="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg"
+                >
+                  Remove Mentor
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

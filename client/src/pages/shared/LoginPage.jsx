@@ -59,49 +59,32 @@ export const LoginPage = ({ role = "user" }) => {
     };
 
     return (
-        <div className="hero bg-base-200 min-h-screen">
-            <div className="hero-content flex-col lg:flex-row-reverse">
-                <div className="text-center lg:text-left">
-                    <h1 className="text-5xl font-bold">Login now! {role} </h1>
-                    <p className="py-6">
-                        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi.
-                        In deleniti eaque aut repudiandae et a id nisi.
-                    </p>
-                </div>
-                <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                    <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            <input type="email" {...register("email")} placeholder="email" className="input input-bordered" required />
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-600 p-6">
+            <div className="w-full max-w-md bg-white bg-opacity-20 backdrop-blur-md shadow-xl rounded-3xl p-8">
+                <h1 className="text-4xl font-bold text-white text-center mb-4">Login now! {role}</h1>
+                <p className="text-white text-center mb-6">
+                    Welcome to your learning hub! Sign in to explore courses, share knowledge, and track progress. Whether you're here to learn or teach, your journey starts now!
+                </p>
+                
+                <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+                    <div>
+                        <label className="block text-white mb-2">Email</label>
+                        <input type="email" {...register("email")} placeholder="Enter your email" 
+                               className="w-full p-4 rounded-xl bg-white bg-opacity-40 border-none focus:ring-4 focus:ring-indigo-400 text-gray-900 placeholder-gray-600" required />
+                    </div>
+                    <div>
+                        <label className="block text-white mb-2">Password</label>
+                        <input type="password" {...register("password")} placeholder="Enter your password" 
+                               className="w-full p-4 rounded-xl bg-white bg-opacity-40 border-none focus:ring-4 focus:ring-indigo-400 text-gray-900 placeholder-gray-600" required />
+                        <div className="text-right text-sm mt-1">
+                            <Link to={user.signup_route} className="text-indigo-200 hover:text-white">New User? Sign up</Link>
                         </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
-                            <input
-                                type="password"
-                                {...register("password")}
-                                placeholder="password"
-                                className="input input-bordered"
-                                required
-                            />
-                            <label className="label">
-                                <Link to={user.signup_route}>New User?</Link>
-                            </label>
-                        </div>
-                        <div className="form-control mt-6">
-                            <button className="btn btn-primary" disabled={isLoading}>
-                                {isLoading ? (
-                                    <span className="loading loading-spinner"></span>
-                                ) : (
-                                    "Login"
-                                )}
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <button className="w-full bg-indigo-500 hover:bg-indigo-600 text-white py-4 rounded-xl transition duration-300 flex items-center justify-center text-lg font-semibold shadow-md hover:shadow-lg"
+                            disabled={isLoading}>
+                        {isLoading ? <span className="loading loading-spinner"></span> : "Login"}
+                    </button>
+                </form>
             </div>
         </div>
     );
