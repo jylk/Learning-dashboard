@@ -64,7 +64,7 @@ export const AdminHome = ({ course }) => {
             <figure className="h-40 overflow-hidden">
               <img
                 className="h-full w-full  object-cover"
-                src="https://res.cloudinary.com/df2vobhg0/image/upload/v1731436804/pymzcxrfj5uyfe37nzoe.png"
+                src="https://res.cloudinary.com/df2vobhg0/image/upload/v1739814973/Web_Devlopement_tbcq40.png"
                 alt="Web Development Course"
               />
             </figure>
@@ -76,7 +76,7 @@ export const AdminHome = ({ course }) => {
               <p className="text-sm text-black font-bold">₹2499</p>
               <p className="text-base font-black text-red-950">Duration: 6 months</p>
               <div className="card-actions justify-end">
-                <Link to={`/course-details/6733a1050504535aa7d2cd43`}>
+                <Link to={`/course-details/67b3421d0714517355a5dabd`}>
                   <button className="btn btn-primary">More Details</button>
                 </Link>
               </div>
@@ -87,7 +87,7 @@ export const AdminHome = ({ course }) => {
             <figure className="h-40 overflow-hidden">
               <img
                 className="h-full w-full object-cover"
-                src="https://res.cloudinary.com/df2vobhg0/image/upload/c_thumb,w_200,g_face/v1731438119/github_fdhvi2.png"
+                src="https://res.cloudinary.com/df2vobhg0/image/upload/v1731952517/pru2i1vbelrkdpyqhxey.png"
                 alt="GitHub Course"
               />
             </figure>
@@ -99,7 +99,7 @@ export const AdminHome = ({ course }) => {
               <p className="text-sm text-black font-bold">₹4000</p>
               <p className="text-base font-black text-red-950">Duration: 9 months</p>
               <div className="card-actions justify-end my-5  ">
-                <Link to={`/course-details/67358fe3a996a69d1fb98b7a`}>
+                <Link to={`/course-details/67b336350714517355a5d87d`}>
                   <button className="btn btn-primary">More Details</button>
                 </Link>
               </div>
@@ -110,7 +110,7 @@ export const AdminHome = ({ course }) => {
             <figure className="h-40 overflow-hidden">
               <img
                 className="h-full w-full object-cover"
-                src="https://res.cloudinary.com/df2vobhg0/image/upload/v1731563891/Python_cen9pp.png"
+                src="https://res.cloudinary.com/df2vobhg0/image/upload/v1739814968/python_pr9bo7.png"
                 alt="Python Course"
               />
             </figure>
@@ -122,7 +122,7 @@ export const AdminHome = ({ course }) => {
               <p className="text-sm text-black font-bold">₹9000</p>
               <p className="text-base font-black text-red-950">Duration: 12 months</p>
               <div className="card-actions justify-end">
-                <Link to={`/course-details/67358ecaa996a69d1fb98b75`}>
+                <Link to={`/course-details/67b334ca0714517355a5d820`}>
                   <button className="btn btn-primary">More Details</button>
                 </Link>
               </div>
@@ -133,7 +133,7 @@ export const AdminHome = ({ course }) => {
             <figure className="h-40 overflow-hidden">
               <img
                 className="w-full object-cover"
-                src="https://res.cloudinary.com/df2vobhg0/image/upload/v1731565755/Java_pxioq4.jpg"
+                src="https://res.cloudinary.com/df2vobhg0/image/upload/v1739814967/Java_delgjj.png"
                 alt="JAVA Course"
               />
             </figure>
@@ -146,7 +146,7 @@ export const AdminHome = ({ course }) => {
               <p className="text-sm text-black font-bold">₹12000</p>
               <p className="text-base font-black text-red-950">Duration: 12 months</p>
               <div className="card-actions justify-end my-5">
-                <Link to={`/course-details/673598f2a996a69d1fb98b80`}>
+                <Link to={`/course-details/67b3343a0714517355a5d801`}>
                   <button className="btn btn-primary">More Details</button>
                 </Link>
               </div>
