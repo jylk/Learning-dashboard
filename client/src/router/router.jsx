@@ -26,7 +26,7 @@ import { AdminHome } from "../pages/admin/AdminHome";
 import { AdminAbout } from "../pages/admin/AdminAbout";
 import { AdminCourse } from "../pages/admin/AdminCourse";
 import { AdminContact } from "../pages/admin/AdminContact";
-import { AdminCreateCourse } from "../pages/admin/AdminCreateCourse";
+
 import { MentorCourseDetails } from "../pages/mentor/MentorCourseDetails";
 import { AdminCourseDetails} from "../pages/admin/AdminCourseDetails";
 import { CreateAssignment } from "../pages/mentor/CreateAssignment";
