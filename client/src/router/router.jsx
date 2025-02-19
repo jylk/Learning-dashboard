@@ -265,59 +265,13 @@ import { AdminMentors } from "../pages/admin/AdminMentors";
   },
 ],
 },
-// {
-//   path: "admin",
-//  element: <AdminLayout />,
-//   errorElement: <ErrorPage role="admin" />,
-//   children: [
-//       {
-//           path: "login",
-//           element: <LoginPage role="admin" />,
-//       },
-//       {
-//         path: "/admin/profile",
-//         element: <AdminProfile/>
-//     },
-     
-//   ],
-// },
+
 ]);
 
 
             
             
-          // { 
-          //   path: "about",
-          //   element: <MentorAbout />,
-
-          // },
-          // { 
-          //   path: "contact",
-          //   element: <MentorContact />,
-
-          // },
-          // { 
-          //   path: "course",
-          //   element: <Course />,
-
-          // },
-          // { 
-          //   path: "course-details/:id",
-          //   element: <CourseDetails />,
-
-          // },
-
-          // {
-          // //     path: "",
-          // //     element: <ProtectRoute />,
-          // //     children: [
-          // //         {
-          // //             path: "profile",
-          // //             element: <MentorProfile />
-          // //         },
-                  
-          // //     ],
-          //  },
+         
       
   
 

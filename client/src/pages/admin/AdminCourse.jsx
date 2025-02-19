@@ -2,7 +2,7 @@ import React from "react";
 import { useFetch } from "../../hooks/UseFetch";
 import { CourseCard } from "../../components/admin/Cards";
 import { CoursePageSkelton } from "../../components/shared/Skelton";
-import { Link } from "react-router-dom";
+
 
 export const AdminCourse = () => {
   const [courses, loading] = useFetch("/course/all-courses");
