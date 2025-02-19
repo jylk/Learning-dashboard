@@ -227,10 +227,7 @@ import { AdminMentors } from "../pages/admin/AdminMentors";
               path: "/admin/profile",
               element: <AdminProfile/>
           },
-          {
-              path: "/admin/create-course",
-              element: <AdminCreateCourse />,
-          },
+         
           { 
             path: "/admin/home",
             element: <AdminHome />,
