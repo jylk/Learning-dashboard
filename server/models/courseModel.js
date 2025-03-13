@@ -27,6 +27,7 @@ const courseSchema = new mongoose.Schema(
       type: String,
       default: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaLGtEd0MJro4X9wDmT2vrvLT-HjKkyyWVmg&s",
     },
+    video: { type: String, default: "" },
     mentor: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Mentor",

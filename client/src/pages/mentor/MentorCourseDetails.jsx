@@ -22,11 +22,10 @@ export const MentorCourseDetails = () => {
       {/* Left Side - Thumbnail inside Video Frame */}
       <div className="w-full md:w-1/2 p-4">
         <div className="w-full aspect-video bg-black rounded-lg overflow-hidden flex items-center justify-center">
-          <img
-            src={courseDetails?.image}
-            alt="Course Thumbnail"
-            className="w-full h-full object-cover"
-          />
+        <video controls className="w-full h-full object-cover">
+            <source src={courseDetails?.video} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
 

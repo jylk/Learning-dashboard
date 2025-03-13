@@ -29,47 +29,93 @@ export const fetchCourseDetails = async (req, res, next) => {
 //
 
 
-export const createCourse = async (req, res, next) => {
+// export const createCourse = async (req, res, next) => {
+//     try {
+//         let imageUrl;
+
+//         const { title, description, duration, price } = req.body;
+
+//         if (!title || !description || !duration || !price) {
+//             return res.status(400).json({ success: false, message: "All fields are required" });
+//         }
+
+//         const isCourseExist = await Course.findOne({ title });
+
+//         if (isCourseExist) {
+//             return res.status(400).json({ message: "Course already exists" });
+//         }
+
+//         console.log("image====", req.file);
+
+//         if (req.file) {
+//             const cloudinaryRes = await cloudinaryInstance.uploader.upload(req.file.path);
+//             imageUrl = cloudinaryRes.url;
+//         }
+
+//         console.log(imageUrl, '====imageUrl');
+
+//         // Ensure the user is a mentor
+//         if (!req.user || !req.user._id) {
+//             return res.status(403).json({ message: "Unauthorized: Only mentors can create courses" });
+//         }
+
+//         const mentorId = req.user._id; // Automatically get mentor ID
+
+//         const newCourse = new Course({ title, description, duration, price, image: imageUrl, mentor: mentorId });
+//         await newCourse.save();
+
+//         res.json({ message: "Course created successfully", data: newCourse });
+//     } catch (error) {
+//         console.log(error);
+//         res.status(error.statusCode || 500).json(error.message || "Internal server error");
+//     }
+// };
+
+export const createCourse = async (req, res) => {
     try {
-        let imageUrl;
+        console.log("Received files:", req.files); // Debugging logs
+
+        if (!req.files || (!req.files.image && !req.files.video)) {
+            return res.status(400).json({ message: "Image or video file is required!" });
+        }
 
         const { title, description, duration, price } = req.body;
-
         if (!title || !description || !duration || !price) {
-            return res.status(400).json({ success: false, message: "All fields are required" });
+            return res.status(400).json({ message: "All fields are required" });
         }
 
         const isCourseExist = await Course.findOne({ title });
-
         if (isCourseExist) {
             return res.status(400).json({ message: "Course already exists" });
         }
 
-        console.log("image====", req.file);
+        // Extract Cloudinary URLs from uploaded files
+        let imageUrl = req.files.image ? req.files.image[0].path : null;
+        let videoUrl = req.files.video ? req.files.video[0].path : null;
 
-        if (req.file) {
-            const cloudinaryRes = await cloudinaryInstance.uploader.upload(req.file.path);
-            imageUrl = cloudinaryRes.url;
-        }
-
-        console.log(imageUrl, '====imageUrl');
-
-        // Ensure the user is a mentor
         if (!req.user || !req.user._id) {
             return res.status(403).json({ message: "Unauthorized: Only mentors can create courses" });
         }
 
-        const mentorId = req.user._id; // Automatically get mentor ID
+        const newCourse = new Course({
+            title,
+            description,
+            duration,
+            price,
+            image: imageUrl,
+            video: videoUrl,
+            mentor: req.user._id
+        });
 
-        const newCourse = new Course({ title, description, duration, price, image: imageUrl, mentor: mentorId });
         await newCourse.save();
-
         res.json({ message: "Course created successfully", data: newCourse });
+
     } catch (error) {
-        console.log(error);
-        res.status(error.statusCode || 500).json(error.message || "Internal server error");
+        console.error(error);
+        res.status(error.statusCode || 500).json({ message: error.message || "Internal server error" });
     }
 };
+
 
 export const updateCourse = async (req, res, next) => {
     try {
