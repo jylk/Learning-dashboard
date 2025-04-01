@@ -2,17 +2,13 @@ import mongoose from "mongoose";
 
 const lectureSchema = new mongoose.Schema(
     {
-    title: 
+    module: 
     { 
         type: String, 
         required: true 
     },
-    description: String,
-    videoUrl: 
-    { 
-        type: String, 
-        required: true 
-    },
+    description: String,   
+    
     courseId: 
     { 
         type: mongoose.Schema.Types.ObjectId, 

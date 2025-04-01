@@ -37,6 +37,9 @@ import { EvaluateAssignment } from "../pages/mentor/EvaluateAssignment";
 import { Orders } from "../pages/user/Order";
 import{AdminUsers} from '../pages/admin/AdminUsers'
 import { AdminMentors } from "../pages/admin/AdminMentors";
+import { UserGetLectures } from "../pages/user/UserGetLectures";
+import { GetLectures } from "../pages/mentor/GetLectures";
+import { AdminGetLectures } from "../pages/admin/AdminGetLectures";
 
 
  export const router = createBrowserRouter([
@@ -119,6 +122,7 @@ import { AdminMentors } from "../pages/admin/AdminMentors";
                 path:"payment/cancel",
                 element: <h2>Payment cancelled</h2>
               },
+              { path: "get-lectures", element: <UserGetLectures /> },
               
               
               
@@ -196,7 +200,8 @@ import { AdminMentors } from "../pages/admin/AdminMentors";
 
         },
         { path:"/mentor/evaluate/:assignmentId" ,
-          element :<EvaluateAssignment />}
+          element :<EvaluateAssignment />},
+          { path: "get-lectures", element: <GetLectures /> },
 
        
           ],
@@ -260,7 +265,8 @@ import { AdminMentors } from "../pages/admin/AdminMentors";
       {
         path:'/admin/AdminMentors',
         element:<AdminMentors/>
-      }
+      },
+      { path: "get-lectures", element: <AdminGetLectures /> },
       ],
   },
 ],
